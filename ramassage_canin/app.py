@@ -11,7 +11,7 @@ app.secret_key = os.getenv("SECRET_KEY", "devkey")
 
 db.init_app(app)
 
-WEBHOOK_URL = os.getenv("https://discordapp.com/api/webhooks/1515956296128663595/a1PGga8NdZku-gIeFFXypJsS17O1I9DiO2gPEoZ63Pv_8DoYCDohEdCnFSfg-2ZNt0te")
+WEBHOOK_URL = ("https://discord.com/api/webhooks/1515956296128663595/a1PGga8NdZku-gIeFFXypJsS17O1I9DiO2gPEoZ63Pv_8DoYCDohEdCnFSfg-2ZNt0te")
 
 SECTEUR_SERVICE = [
     "saint-pierre", "st-pierre", "saint-jean", "saint-damase",
