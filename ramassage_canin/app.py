@@ -30,8 +30,18 @@ SECTEUR_SERVICE = [
 
 
 def envoyer_discord(message):
-    if WEBHOOK_URL:
-        requests.post(WEBHOOK_URL, json={"content": message})
+    if not WEBHOOK_URL:
+        print("❌ Webhook manquant")
+        return
+
+    try:
+        r = requests.post(WEBHOOK_URL, json={"content": message}, timeout=10)
+
+        print("✅ Discord status code:", r.status_code)
+        print("📩 Discord response:", r.text)
+
+    except Exception as e:
+        print("❌ Erreur webhook:", e)
 
 
 @app.route("/", methods=["GET", "POST"])
