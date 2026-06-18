@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Service de Ramassage Canin</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #d4d42d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            gap: 30px;
+        }
+
+        form {
+            background: #232b28;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4d42d
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #40444b;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #d4d42d;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d4d42d;
+        }
+
+        .map-container {
+            width: 325px;
+        }
+
+        .map-image {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #d4d42d;
+        }
+
+        .info-text {
+            margin-top: 15px;
+            color: #e0e0e0;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+<form method="POST">
+
+    <h1>🐶 Service de Ramassage Canin</h1>
+
+    <input type="text"
+           name="nom"
+           placeholder="Nom du client"
+           required>
+
+    <input type="text"
+           name="adresse"
+           placeholder="Adresse complète"
+           required>
+
+    <input type="text"
+           name="telephone"
+           placeholder="Téléphone">
+
+    <select name="frequence">
+        <option value="">Fréquence du service</option>
+        <option>Unique</option>
+        <option>Hebdomadaire</option>
+        <option>Aux 2 semaines</option>
+        <option>Mensuelle</option>
+    </select>
+
+    <input type="number"
+           name="chiens"
+           placeholder="Nombre de chiens">
+
+    <input type="text"
+           name="acces"
+           placeholder="Instructions d'accès à la cour">
+
+    <input type="text"
+           name="moment"
+           placeholder="Moment préféré pour la visite">
+
+    <textarea
+        name="notes"
+        placeholder="Informations supplémentaires (chien dans la cour, clôture, etc.)">
+    </textarea>
+
+    <button type="submit">
+        DEMANDER UN RAMASSAGE
+    </button>
+
+</form>
+
+<div class="map-container">
+
+    <img src="{{ url_for('static', filename='zone_service.png') }}"
+         alt="Zone de service"
+         class="map-image">
+
+    <p class="info-text">
+
+        <strong>Zone actuelle de service.</strong><br><br>
+
+        Nous offrons le nettoyage résidentiel des excréments canins
+        directement à domicile.
+
+        Service ponctuel ou récurrent selon vos besoins.
+
+        Les demandes situées dans notre secteur de couverture
+        sont traitées automatiquement.
+
+    </p>
+
+</div>
+
+</body>
+</html>
