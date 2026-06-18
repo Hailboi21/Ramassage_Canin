@@ -8,7 +8,7 @@ app = Flask(__name__)
 # =========================
 # CONFIG
 # =========================
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cashnettes.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///ramassage_canin.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = "votre_cle_secrete"
 
@@ -21,7 +21,7 @@ with app.app_context():
 # =========================
 # DISCORD
 # =========================
-WEBHOOK_URL = "https://discordapp.com/api/webhooks/1515671283608850623/vFF_V_4o2DVysNCixpXJESxEPHcV708x-GF_ZdM1u38RPCW9u04_usXfvJeGSiZqXGVg"
+WEBHOOK_URL = "https://discordapp.com/api/webhooks/1515956296128663595/a1PGga8NdZku-gIeFFXypJsS17O1I9DiO2gPEoZ63Pv_8DoYCDohEdCnFSfg-2ZNt0te"
 
 def envoyer_discord(message):
     if not WEBHOOK_URL:
