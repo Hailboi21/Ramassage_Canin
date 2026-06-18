@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashnettes</title>
+
+```
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background:#d4d42d;
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:40px 20px;
+        color:white;
+    }
+
+    .container{
+        max-width:950px;
+        width:100%;
+    }
+
+    .card{
+        background:#232b28;
+        border-radius:25px;
+        padding:50px;
+        box-shadow:0 15px 40px rgba(0,0,0,.35);
+        position:relative;
+        overflow:hidden;
+    }
+
+    .card::before{
+        content:"";
+        position:absolute;
+        right:-80px;
+        top:50px;
+        width:350px;
+        height:350px;
+        background:url("{{ url_for('static', filename='logo_cashnettes.png') }}");
+        background-repeat:no-repeat;
+        background-size:contain;
+        opacity:0.05;
+        pointer-events:none;
+    }
+
+    .logo{
+        display:block;
+        width:180px;
+        max-width:35%;
+        margin:0 auto 20px auto;
+    }
+
+    h1{
+        text-align:center;
+        font-size:3rem;
+        margin-bottom:10px;
+    }
+
+    .subtitle{
+        text-align:center;
+        color:#d8d83c;
+        font-size:1.4rem;
+        margin-bottom:35px;
+    }
+
+    .intro{
+        text-align:center;
+        line-height:1.8;
+        color:#e2e2e2;
+        font-size:1.1rem;
+        margin-bottom:40px;
+    }
+
+    .separator{
+        border-top:1px solid rgba(255,255,255,.08);
+        margin:35px 0;
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:40px;
+    }
+
+    .section h2{
+        color:#d8d83c;
+        margin-bottom:15px;
+    }
+
+    .section ul{
+        padding-left:20px;
+        line-height:2;
+    }
+
+    .impact{
+        margin-top:35px;
+        padding-top:35px;
+        border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .impact h2{
+        color:#d8d83c;
+        margin-bottom:15px;
+    }
+
+    .impact p{
+        line-height:1.8;
+    }
+
+    .donation{
+        margin-top:15px;
+        color:#ffd54a;
+        font-weight:bold;
+        font-size:1.1rem;
+    }
+
+    .cta{
+        text-align:center;
+        margin-top:40px;
+    }
+
+    .btn{
+        display:inline-block;
+        text-decoration:none;
+        background:#7289da;
+        color:white;
+        padding:18px 35px;
+        border-radius:12px;
+        font-size:1.1rem;
+        font-weight:bold;
+        transition:.2s;
+    }
+
+    .btn:hover{
+        background:#5b6eae;
+        transform:translateY(-2px);
+    }
+
+    .footer{
+        text-align:center;
+        margin-top:25px;
+        opacity:.7;
+        font-size:.9rem;
+    }
+
+    @media(max-width:768px){
+
+        .card{
+            padding:30px;
+        }
+
+        .grid{
+            grid-template-columns:1fr;
+        }
+
+        h1{
+            font-size:2.2rem;
+        }
+
+        .logo{
+            width:140px;
+        }
+
+        .card::before{
+            display:none;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="card">
+
+    <img
+        src="{{ url_for('static', filename='logo_cashnettes.png') }}"
+        alt="Cashnettes"
+        class="logo">
+
+    <h1>Bienvenue Sur Ramassage Canin</h1>
+
+    <p class="subtitle">
+        Vôtre Service de ramassages d'excréments Canins.
+    </p>
+
+    <p class="intro">
+        Vous Avez une cours a faire nettoyée ? Usé de faire cet corvées ?
+        N'attendez plus et prennez contacte nous ici par le biais de se formulaire 
+        c'est simple et efficace , notre équipe vous recommuniquera dans les plus bref délais,
+        afin d'établir un rendez-vous , vous n'avez qu'a remplir ce formulaire 
+    </p>
+
+    <div class="separator"></div>
+
+    <div class="grid">
+
+        <div class="section">
+            <h2>📋 Comment ça fonctionne ?</h2>
+
+            <ul>
+                <li>Vous remplissez une demande.</li>
+                <li>Nous planifions la collecte.</li>
+                <li>Nous vennons chez vous a l'heure planifier.</li>
+                <li>Nous nous occupons du nettoyage de votre cours.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🌱 Pourquoi choisir Ramassages Canin ?</h2>
+
+            <ul>
+                <li>Service rapide et local.</li>
+                <li>Parfait pour tout personnes désirant se sauvé de cet corvées.</li>
+                <li>Un terrain propre sur demande et selon vaut besoin</li>
+                <li>Initiative locale.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="impact">
+
+        <h2>💚 Un impact positif</h2>
+
+        <p>
+            Chez Ramassage Canin, nous croyons qu'un petit geste collectif
+            peut faire une grande différence.
+        </p>
+
+        <p class="donation">
+            10 % des bénéfices annuels seront redistribués à la Fondation Charles-Bruneau.
+        </p>
+
+        <p style="margin-top:15px;">
+            En nous confiant cet tâche ingrattes vous vous épargnées le travail
+            et en même temps vous participez
+            directement à soutenir une cause importante pour nous !
+
+        </p>
+
+    </div>
+
+    <div class="cta">
+        <a href="/start" class="btn">
+            Faire une demande de ramassage
+        </a>
+    </div>
+
+    <div class="footer">
+        Service actuellement offert dans les secteurs desservis par Ramassage Canin.
+    </div>
+
+</div>
+```
+
+</div>
+
+</body>
+</html>
