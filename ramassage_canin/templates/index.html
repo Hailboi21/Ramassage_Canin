@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Service de Ramassage Canin</title>
+    <title>Scoopi</title>
 
     <style>
         body {
@@ -79,7 +79,7 @@
 
 <form method="POST">
 
-    <h1>🐶 Service de Ramassage Canin</h1>
+    <h1>🐶 Scoopi</h1>
 
     <input type="text"
            name="nom"
@@ -113,7 +113,7 @@
 
     <input type="text"
            name="moment"
-           placeholder="Moment préféré pour la visite">
+           placeholder="Moment préféré pour vous rappeler?">
 
     <textarea
         name="notes"
@@ -121,14 +121,14 @@
     </textarea>
 
     <button type="submit">
-        DEMANDER UN RAMASSAGE
+        Faite une Soumissions en ligne
     </button>
 
 </form>
 
 <div class="map-container">
 
-    <img src="{{ url_for('static', filename='zone_service.png') }}"
+    <img src="{{ url_for('static', filename='carte_secteur.png') }}"
          alt="Zone de service"
          class="map-image">
 
