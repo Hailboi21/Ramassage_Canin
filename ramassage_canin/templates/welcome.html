@@ -332,25 +332,51 @@ function toggleChat(){
 }
 
 function sendMessage(){
+
     const input = document.getElementById("userInput");
     const text = input.value.trim();
     if(!text) return;
 
     const chatBody = document.getElementById("chatBody");
 
-    chatBody.innerHTML += `<div class="msg user">${text}</div>`;
+    chatBody.innerHTML += `<div class="msg user">${escapeHTML(text)}</div>`;
 
-    let msg = text.toLowerCase();
-    let response = "Je peux vous aider avec les prix, le fonctionnement ou le secteur.";
+    const msg = text.toLowerCase();
 
-    if(msg.includes("prix")) response = "Les prix varient selon votre terrain.";
-    else if(msg.includes("comment")) response = "Vous remplissez une demande et nous intervenons.";
-    else if(msg.includes("secteur")) response = "Entrez votre adresse dans le formulaire.";
+    let response = "";
+
+    if(msg.includes("prix") || msg.includes("tarif")){
+        response = "Les prix dépendent du terrain et de la fréquence.";
+    }
+    else if(msg.includes("comment")){
+        response = "Vous remplissez un formulaire et nous intervenons.";
+    }
+    else if(msg.includes("secteur")){
+        response = "Entrez votre adresse dans le formulaire pour vérifier.";
+    }
+    else if(msg.includes("payer")){
+        response = "Paiement après service.";
+    }
+    else if(msg.includes("contact")){
+        response = "Utilisez le formulaire du site.";
+    }
+    else {
+        response = "Je peux vous aider avec les prix, fonctionnement ou secteur.";
+    }
 
     chatBody.innerHTML += `<div class="msg bot">${response}</div>`;
+
     input.value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 }
+
+/* ENTER KEY FIX */
+document.getElementById("userInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        sendMessage();
+    }
+});
+
 </script>
 
 </body>
