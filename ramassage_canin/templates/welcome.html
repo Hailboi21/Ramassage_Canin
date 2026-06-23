@@ -1,274 +1,357 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoopi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scoopi</title>
 
-```
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    body{
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background:#d4d42d;
-        min-height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        padding:40px 20px;
-        color:white;
-    }
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:#d4d42d;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    color:white;
+}
 
-    .container{
-        max-width:950px;
-        width:100%;
-    }
+.container{
+    max-width:950px;
+    width:100%;
+}
 
-    .card{
-        background:#232b28;
-        border-radius:25px;
-        padding:50px;
-        box-shadow:0 15px 40px rgba(0,0,0,.35);
-        position:relative;
-        overflow:hidden;
-    }
+.card{
+    background:#232b28;
+    border-radius:25px;
+    padding:50px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    position:relative;
+    overflow:hidden;
+}
 
-    .card::before{
-        content:"";
-        position:absolute;
-        right:-80px;
-        top:50px;
-        width:350px;
-        height:350px;
-        background:url("{{ url_for('static', filename='logo_cashnettes.png') }}");
-        background-repeat:no-repeat;
-        background-size:contain;
-        opacity:0.05;
-        pointer-events:none;
-    }
+.card::before{
+    content:"";
+    position:absolute;
+    right:-80px;
+    top:50px;
+    width:350px;
+    height:350px;
+    background:url("{{ url_for('static', filename='logo_cashnettes.png') }}");
+    background-repeat:no-repeat;
+    background-size:contain;
+    opacity:0.05;
+    pointer-events:none;
+}
 
-    .logo{
-        display:block;
-        width:180px;
-        max-width:35%;
-        margin:0 auto 20px auto;
-    }
+.logo{
+    display:block;
+    width:180px;
+    max-width:35%;
+    margin:0 auto 20px auto;
+}
 
-    h1{
-        text-align:center;
-        font-size:3rem;
-        margin-bottom:10px;
-    }
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:10px;
+}
 
-    .subtitle{
-        text-align:center;
-        color:#d8d83c;
-        font-size:1.4rem;
-        margin-bottom:35px;
-    }
+.subtitle{
+    text-align:center;
+    color:#d8d83c;
+    font-size:1.4rem;
+    margin-bottom:35px;
+}
 
-    .intro{
-        text-align:center;
-        line-height:1.8;
-        color:#e2e2e2;
-        font-size:1.1rem;
-        margin-bottom:40px;
-    }
+.intro{
+    text-align:center;
+    line-height:1.8;
+    color:#e2e2e2;
+    font-size:1.1rem;
+    margin-bottom:40px;
+}
 
-    .separator{
-        border-top:1px solid rgba(255,255,255,.08);
-        margin:35px 0;
-    }
+.separator{
+    border-top:1px solid rgba(255,255,255,.08);
+    margin:35px 0;
+}
 
-    .grid{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:40px;
-    }
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
 
-    .section h2{
-        color:#d8d83c;
-        margin-bottom:15px;
-    }
+.section h2{
+    color:#d8d83c;
+    margin-bottom:15px;
+}
 
-    .section ul{
-        padding-left:20px;
-        line-height:2;
-    }
+.section ul{
+    padding-left:20px;
+    line-height:2;
+}
 
-    .impact{
-        margin-top:35px;
-        padding-top:35px;
-        border-top:1px solid rgba(255,255,255,.08);
-    }
+.impact{
+    margin-top:35px;
+    padding-top:35px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
 
-    .impact h2{
-        color:#d8d83c;
-        margin-bottom:15px;
-    }
+.impact h2{
+    color:#d8d83c;
+    margin-bottom:15px;
+}
 
-    .impact p{
-        line-height:1.8;
-    }
+.impact p{
+    line-height:1.8;
+}
 
-    .donation{
-        margin-top:15px;
-        color:#ffd54a;
-        font-weight:bold;
-        font-size:1.1rem;
-    }
+.donation{
+    margin-top:15px;
+    color:#ffd54a;
+    font-weight:bold;
+    font-size:1.1rem;
+}
 
-    .cta{
-        text-align:center;
-        margin-top:40px;
-    }
+.cta{
+    text-align:center;
+    margin-top:40px;
+}
 
-    .btn{
-        display:inline-block;
-        text-decoration:none;
-        background:#7289da;
-        color:white;
-        padding:18px 35px;
-        border-radius:12px;
-        font-size:1.1rem;
-        font-weight:bold;
-        transition:.2s;
-    }
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#7289da;
+    color:white;
+    padding:18px 35px;
+    border-radius:12px;
+    font-size:1.1rem;
+    font-weight:bold;
+}
 
-    .btn:hover{
-        background:#5b6eae;
-        transform:translateY(-2px);
-    }
+.footer{
+    text-align:center;
+    margin-top:25px;
+    opacity:.7;
+    font-size:.9rem;
+}
 
-    .footer{
-        text-align:center;
-        margin-top:25px;
-        opacity:.7;
-        font-size:.9rem;
-    }
+/* =========================
+CHAT BUTTON (AJOUT UNIQUEMENT)
+========================= */
 
-    @media(max-width:768px){
+.chat-button{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:65px;
+    height:65px;
+    border:none;
+    border-radius:50%;
+    background:#7289da;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    transition:.2s;
+}
 
-        .card{
-            padding:30px;
-        }
+.chat-button:hover{
+    transform:scale(1.05);
+}
 
-        .grid{
-            grid-template-columns:1fr;
-        }
+/* CHAT WINDOW */
+.chat-window{
+    position:fixed;
+    bottom:100px;
+    right:25px;
+    width:320px;
+    height:420px;
+    background:#232b28;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    display:none;
+    flex-direction:column;
+    overflow:hidden;
+}
 
-        h1{
-            font-size:2.2rem;
-        }
+.chat-header{
+    background:#7289da;
+    padding:10px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+}
 
-        .logo{
-            width:140px;
-        }
+.chat-body{
+    flex:1;
+    padding:10px;
+    overflow-y:auto;
+    font-size:0.9rem;
+}
 
-        .card::before{
-            display:none;
-        }
-    }
+.chat-input{
+    display:flex;
+    border-top:1px solid #444;
+}
+
+.chat-input input{
+    flex:1;
+    padding:10px;
+    border:none;
+    outline:none;
+}
+
+.chat-input button{
+    background:#7289da;
+    border:none;
+    color:white;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+.msg{
+    margin-bottom:10px;
+    padding:8px 10px;
+    border-radius:10px;
+    max-width:80%;
+}
+
+.bot{
+    background:#3a3f44;
+}
+
+.user{
+    background:#d8d83c;
+    color:#232b28;
+    margin-left:auto;
+}
 </style>
-```
-
 </head>
 
 <body>
 
 <div class="container">
 
-```
 <div class="card">
 
-    <img
-        src="{{ url_for('static', filename='logo_scoopi.png') }}"
-        alt="logo_scoopi"
-        class="logo">
+<img src="{{ url_for('static', filename='logo_scoopi.png') }}" class="logo">
 
-    <h1>Bienvenue Sur Scoopi</h1>
+<h1>Scoopi</h1>
 
-    <p class="subtitle">
-        Votre Service de ramassages d'excréments Canins.
-    </p>
+<p class="subtitle">Votre Service de ramassages d'excréments Canins.</p>
 
-    <p class="intro">
-        Vous Avez une cour a faire nettoyée ? Usé de faire cet corvées ?
-        N'attendez plus et prennez contacte nous ici par le biais de se formulaire 
-        c'est simple et efficace , notre équipe vous recommuniquera dans les plus bref délais,
-        afin d'établir un rendez-vous , vous n'avez qu'a remplir ce formulaire 
-    </p>
+<p class="intro">
+Vous Avez une cour a faire nettoyée ? Usé de faire cet corvées ?
+N'attendez plus et prennez contacte nous ici par le biais de se formulaire
+c'est simple et efficace.
+</p>
 
-    <div class="separator"></div>
+<div class="separator"></div>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="section">
-            <h2>📋 Comment ça fonctionne ?</h2>
+<div class="section">
+<h2>📋 Comment ça fonctionne ?</h2>
+<ul>
+<li>Vous remplissez une demande.</li>
+<li>Nous planifions la collecte.</li>
+<li>Nous venons chez vous.</li>
+<li>Nous nettoyons votre cour.</li>
+</ul>
+</div>
 
-            <ul>
-                <li>Vous remplissez une demande.</li>
-                <li>Nous planifions la collecte.</li>
-                <li>Nous vennons chez vous a l'heure planifier.</li>
-                <li>Nous nous occupons du nettoyage de votre cours.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>🌱 Pourquoi choisir Scoopi ?</h2>
-
-            <ul>
-                <li>Service rapide et local.</li>
-                <li>Parfait pour tout personnes désirant se sauvé de cet corvées.</li>
-                <li>Un terrain propre sur demande et selon vaut besoin</li>
-                <li>Initiative locale.</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="impact">
-
-        <h2>💚 Un impact positif</h2>
-
-        <p>
-            Chez Scoopi, nous croyons qu'un petit geste collectif
-            peut faire une grande différence.
-        </p>
-
-        <p class="donation">
-            10 % des bénéfices annuels seront redistribués à la Fondation Charles-Bruneau.
-        </p>
-
-        <p style="margin-top:15px;">
-            En nous confiant cet tâche ingrattes vous vous épargnées le travail
-            et en même temps vous participez
-            directement à soutenir une cause importante pour nous !
-
-        </p>
-
-    </div>
-
-    <div class="cta">
-        <a href="/start" class="btn">
-            Faire une demande de par internet
-        </a>
-    </div>
-
-    <div class="footer">
-        Service actuellement offert dans les secteurs desservis par Scoopi.
-    </div>
+<div class="section">
+<h2>🌱 Pourquoi choisir Scoopi ?</h2>
+<ul>
+<li>Service rapide et local.</li>
+<li>Simple et sans effort.</li>
+<li>Terrain propre garanti.</li>
+<li>Initiative locale.</li>
+</ul>
+</div>
 
 </div>
-```
+
+<div class="impact">
+
+<h2>💚 Un impact positif</h2>
+
+<p class="donation">
+10 % des bénéfices seront redistribués à une fondation.
+</p>
 
 </div>
+
+<div class="cta">
+<a href="/start" class="btn">Faire une demande</a>
+</div>
+
+<div class="footer">
+Service disponible selon votre secteur.
+</div>
+
+</div>
+</div>
+
+<!-- CHAT BUTTON -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<!-- CHAT WINDOW -->
+<div class="chat-window" id="chatWindow">
+
+<div class="chat-header">
+Assistant Scoopi
+<span onclick="toggleChat()">✖</span>
+</div>
+
+<div class="chat-body" id="chatBody">
+<div class="msg bot">Bonjour 👋 Comment puis-je vous aider ?</div>
+</div>
+
+<div class="chat-input">
+<input id="userInput" placeholder="Écrire...">
+<button onclick="sendMessage()">→</button>
+</div>
+
+</div>
+
+<script>
+function toggleChat(){
+    const chat = document.getElementById("chatWindow");
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+}
+
+function sendMessage(){
+    const input = document.getElementById("userInput");
+    const text = input.value.trim();
+    if(!text) return;
+
+    const chatBody = document.getElementById("chatBody");
+
+    chatBody.innerHTML += `<div class="msg user">${text}</div>`;
+
+    let msg = text.toLowerCase();
+    let response = "Je peux vous aider avec les prix, le fonctionnement ou le secteur.";
+
+    if(msg.includes("prix")) response = "Les prix varient selon votre terrain.";
+    else if(msg.includes("comment")) response = "Vous remplissez une demande et nous intervenons.";
+    else if(msg.includes("secteur")) response = "Entrez votre adresse dans le formulaire.";
+
+    chatBody.innerHTML += `<div class="msg bot">${response}</div>`;
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+</script>
 
 </body>
 </html>
