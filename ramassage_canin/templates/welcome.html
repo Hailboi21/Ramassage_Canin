@@ -348,10 +348,10 @@ function sendMessage(){
 
     // INTENTIONS (plus intelligent que includes simple)
     const isPrice = msg.includes("prix") || msg.includes("tarif") || msg.includes("coût") || msg.includes("estimations");
-    const isHow = msg.includes("comment") || msg.includes("fonctionne");
-    const isSector = msg.includes("secteur") || msg.includes("où") || msg.includes("adresse");
+    const isHow = msg.includes("utilisé") || msg.includes("fonctionne")|| msg.includes("utilise");
+    const isSector = msg.includes("secteur") || msg.includes("où") || msg.includes("adresse")|| msg.includes("emplacement");
     const isPay = msg.includes("payer") || msg.includes("paiement");
-    const isContact = msg.includes("téléphone") || msg.includes("contact")|| msg.includes("vous joindre");
+    const isContact = msg.includes("téléphone") || msg.includes("contact")|| msg.includes("vous joindre")|| msg.includes("facebook");
 
     if(isPrice){
         response = "Nos prix dépendent de la taille du terrain et de la fréquence du service.";
