@@ -21,7 +21,17 @@ body{
     align-items:center;
     padding:40px 20px;
     color:white;
+
+    /* ===== AJOUT FADE ===== */
+    opacity:0;
+    transition:opacity 1.4s ease-in-out;
 }
+
+body.loaded{
+    opacity:1;
+}
+
+/* ======================= */
 
 .container{
     max-width:950px;
@@ -338,7 +348,6 @@ function sendMessage(){
 
     const chatBody = document.getElementById("chatBody");
 
-    // message user
     chatBody.innerHTML += `<div class="msg user">${text}</div>`;
 
     const msg = text.toLowerCase();
@@ -346,7 +355,6 @@ function sendMessage(){
     let response = "";
     let actions = "";
 
-    // INTENTIONS (plus intelligent que includes simple)
     const isPrice = msg.includes("prix") || msg.includes("tarif") || msg.includes("coût") || msg.includes("estimations");
     const isHow = msg.includes("utilisé") || msg.includes("fonctionne")|| msg.includes("utilise");
     const isSector = msg.includes("secteur") || msg.includes("où") || msg.includes("adresse")|| msg.includes("emplacement");
@@ -389,13 +397,16 @@ function sendMessage(){
     chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-/* ENTER KEY FIX */
 document.getElementById("userInput").addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         sendMessage();
     }
 });
 
+/* ===== FADE IN AJOUTÉ ===== */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
 </script>
 
 </body>
