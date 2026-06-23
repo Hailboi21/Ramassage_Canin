@@ -132,11 +132,6 @@
          alt="Zone de service"
          class="map-image">
 
-    <video controls width="100%" style="margin-top:15px; border-radius:10px; border:3px solid #d4d42d;">
-        <source src="{{ url_for('static', filename='explication.mp4') }}" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-    </video>
-
     <p class="info-text">
         <strong>Zone actuelle de service.</strong><br><br>
 
@@ -147,6 +142,14 @@
 
         Les demandes situées dans notre secteur de couverture
         sont traitées automatiquement.
+
+    <video controls width="100%" style="margin-top:15px; border-radius:10px; border:3px solid #d4d42d;">
+        <source src="{{ url_for('static', filename='explication.mp4') }}" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
+
+    <p class="info-text">
+        <strong>Ceci est une Vidéo explicatives.</strong><br><br>
 
     </p>
 
