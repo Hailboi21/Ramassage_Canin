@@ -21,7 +21,7 @@ with app.app_context():
 # =========================
 # DISCORD
 # =========================
-WEBHOOK_URL = "https://discordapp.com/api/webhooks/1515956296128663595/a1PGga8NdZku-gIeFFXypJsS17O1I9DiO2gPEoZ63Pv_8DoYCDohEdCnFSfg-2ZNt0te"
+WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 def envoyer_discord(message):
     if not WEBHOOK_URL:
