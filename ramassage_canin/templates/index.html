@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Scoopi</title>
-    <link rel="stylesheet" href="style.css">
+    
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -13,6 +13,20 @@
             justify-content: center;
             padding: 50px;
             gap: 30px;
+
+            /* === AJOUT UNIQUEMENT ICI === */
+            opacity: 0;
+            animation: fadeInPage 1.4s ease forwards;
+        }
+
+        /* === AJOUT UNIQUEMENT === */
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         form {
@@ -76,20 +90,6 @@
 </head>
 
 <body>
-
-<header class="header">
-    <div class="logo">
-        🐶 <span>Scoopi</span>
-    </div>
-
-    <nav class="nav">
-        <a href="#service">Service</a>
-        <a href="#carte">Zone</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="menu-toggle">☰</div>
-</header>
 
 <form method="POST">
 
@@ -168,15 +168,6 @@
     </p>
 
 </div>
-
-<script>
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav');
-
-    toggle.addEventListener('click', () => {
-        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
-</script>
 
 </body>
 </html>
