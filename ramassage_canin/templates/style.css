@@ -1,3 +1,15 @@
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     min-height: 100vh;
@@ -8,11 +20,46 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 30px;
+
     padding: 50px;
+    padding-top: 90px;
+
+    animation: fadeInPage 0.8s ease-out;
 }
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInItem {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   FORM
+========================= */
+
 form {
     background: rgba(35, 43, 40, 0.95);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
 
     padding: 30px;
     border-radius: 16px;
@@ -23,12 +70,22 @@ form {
     border: 1px solid rgba(255,255,255,0.08);
 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInItem 0.9s ease forwards;
+    animation-delay: 0.1s;
 }
 
 form:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.45);
 }
+
+/* =========================
+   INPUTS
+========================= */
+
 input,
 textarea,
 select {
@@ -42,6 +99,9 @@ select {
     background: #40444b;
     color: white;
 
+    font-size: 16px;
+    font-family: inherit;
+
     transition: all 0.2s ease;
 }
 
@@ -53,6 +113,11 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(212, 212, 45, 0.25);
     background: #4b4f55;
 }
+
+/* =========================
+   BUTTON
+========================= */
+
 button {
     width: 100%;
     padding: 12px;
@@ -77,12 +142,22 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
+
+/* =========================
+   MAP
+========================= */
+
 .map-container {
     width: 340px;
 
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInItem 0.9s ease forwards;
+    animation-delay: 0.3s;
 }
 
 .map-image {
@@ -99,11 +174,20 @@ button:active {
 .map-image:hover {
     transform: scale(1.02);
 }
+
+/* =========================
+   TEXT
+========================= */
+
 h1 {
     text-align: center;
     color: #d4d42d;
     margin-bottom: 20px;
     letter-spacing: 1px;
+}
+
+p {
+    line-height: 1.5;
 }
 
 .info-text {
@@ -112,4 +196,118 @@ h1 {
     padding: 12px;
     border-radius: 10px;
     font-size: 0.85em;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 30px;
+
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    z-index: 1000;
+}
+
+.logo {
+    color: #d4d42d;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    color: white;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 0.95rem;
+
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #d4d42d;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.nav.active {
+    display: flex;
+}
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        padding-top: 90px;
+        gap: 20px;
+    }
+
+    form,
+    .map-container {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .nav {
+        display: none;
+        flex-direction: column;
+
+        position: absolute;
+        top: 70px;
+        right: 20px;
+
+        background: rgba(20,20,20,0.95);
+        padding: 15px;
+        border-radius: 10px;
+
+        min-width: 150px;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
