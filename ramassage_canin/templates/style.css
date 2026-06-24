@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    min-height: 100vh;
+
+    background: linear-gradient(135deg, #d4d42d, #f2f2a0);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 50px;
+}
+form {
+    background: rgba(35, 43, 40, 0.95);
+    backdrop-filter: blur(8px);
+
+    padding: 30px;
+    border-radius: 16px;
+
+    width: 380px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+form:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+}
+input,
+textarea,
+select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: #40444b;
+    color: white;
+
+    transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #d4d42d;
+    box-shadow: 0 0 0 3px rgba(212, 212, 45, 0.25);
+    background: #4b4f55;
+}
+button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #d4d42d, #c7c72a);
+    color: black;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(212, 212, 45, 0.3);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+.map-container {
+    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.map-image {
+    width: 100%;
+    border-radius: 16px;
+
+    border: 2px solid rgba(212, 212, 45, 0.8);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+
+    transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+    transform: scale(1.02);
+}
+h1 {
+    text-align: center;
+    color: #d4d42d;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.info-text {
+    color: #1a1a1a;
+    background: rgba(255,255,255,0.6);
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.85em;
+}
