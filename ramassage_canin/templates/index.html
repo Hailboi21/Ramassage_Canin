@@ -3,8 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Scoopi</title>
-
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #d4d42d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            gap: 30px;
+        }
+
+        form {
+            background: #232b28;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4d42d
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #40444b;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #d4d42d;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d4d42d;
+        }
+
+        .map-container {
+            width: 325px;
+        }
+
+        .map-image {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #d4d42d;
+        }
+
+        .info-text {
+            margin-top: 15px;
+            color: #000000;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,77 +91,91 @@
     <div class="menu-toggle">☰</div>
 </header>
 
-<!-- WRAPPER IMPORTANT (meilleur responsive) -->
-<div class="container">
+<form method="POST">
 
-    <form method="POST" id="contact">
+    <h1>🐶 Scoopi</h1>
 
-        <h1>🐶 Scoopi</h1>
+    <input type="text"
+           name="nom"
+           placeholder="Nom du client"
+           required>
 
-        <input type="text" name="nom" placeholder="Nom du client" required>
+    <input type="text"
+           name="adresse"
+           placeholder="Adresse complète"
+           required>
 
-        <input type="text" name="adresse" placeholder="Adresse complète" required>
+    <input type="text"
+           name="telephone"
+           placeholder="Téléphone">
 
-        <input type="text" name="telephone" placeholder="Téléphone">
+    <select name="frequence">
+        <option value="">Fréquence du service</option>
+        <option>Unique</option>
+        <option>Hebdomadaire</option>
+        <option>Aux 2 semaines</option>
+        <option>Mensuelle</option>
+    </select>
 
-        <select name="frequence">
-            <option value="">Fréquence du service</option>
-            <option>Unique</option>
-            <option>Hebdomadaire</option>
-            <option>Aux 2 semaines</option>
-            <option>Mensuelle</option>
-        </select>
+    <input type="number"
+           name="chiens"
+           placeholder="Nombre de chiens">
 
-        <input type="number" name="chiens" placeholder="Nombre de chiens">
+    <input type="text"
+           name="acces"
+           placeholder="Instructions d'accès à la cour">
 
-        <input type="text" name="acces" placeholder="Instructions d'accès à la cour">
+    <input type="text"
+           name="moment"
+           placeholder="Moment préféré pour vous rappeler?">
 
-        <input type="text" name="moment" placeholder="Moment préféré pour vous rappeler?">
+    <textarea
+        name="notes"
+        placeholder="Informations supplémentaires (chien dans la cour, clôture, etc.)">
+    </textarea>
 
-        <textarea name="notes" placeholder="Informations supplémentaires (chien dans la cour, clôture, etc.)"></textarea>
+    <button type="submit">
+        Faite une Soumissions en ligne
+    </button>
 
-        <button type="submit">
-            Faire une soumission en ligne
-        </button>
+</form>
 
-    </form>
+<div class="map-container">
 
-    <div class="map-container">
+    <img src="{{ url_for('static', filename='carte_secteur.png') }}"
+         alt="Zone de service"
+         class="map-image">
 
-        <img src="{{ url_for('static', filename='carte_secteur.png') }}"
-             alt="Zone de service"
-             class="map-image">
+    <p class="info-text">
+        <strong>Zone actuelle de service.</strong><br><br>
 
-        <p class="info-text">
-            <strong>Zone actuelle de service.</strong><br><br>
+        Nous offrons le nettoyage résidentiel des excréments canins
+        directement à domicile.
 
-            Nous offrons le nettoyage résidentiel des excréments canins directement à domicile.<br><br>
+        Service ponctuel ou récurrent selon vos besoins.
 
-            Service ponctuel ou récurrent selon vos besoins.<br><br>
+        Les demandes situées dans notre secteur de couverture
+        sont traitées automatiquement. 
 
-            Les demandes situées dans notre secteur de couverture sont traitées automatiquement.
-        </p>
+    <video controls width="100%" style="margin-top:15px; border-radius:10px; border:3px solid #d4d42d;">
+        <source src="{{ url_for('static', filename='explication.mp4') }}" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
 
-        <video controls width="100%" style="margin-top:15px; border-radius:10px; border:3px solid #d4d42d;">
-            <source src="{{ url_for('static', filename='explication.mp4') }}" type="video/mp4">
-            Votre navigateur ne supporte pas la vidéo.
-        </video>
+    <p class="info-text">
+        <strong>Ceci est une Vidéo explicatives.</strong><br><br>
 
-        <p class="info-text">
-            <strong>Vidéo explicative</strong>
-        </p>
-
-    </div>
+    </p>
 
 </div>
 
 <script>
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
 
-toggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-});
+    toggle.addEventListener('click', () => {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
 </script>
 
 </body>
